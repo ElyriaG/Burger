@@ -24,36 +24,38 @@ router.post("/api/burgers", function (req, res) {
         });
 });
 
-router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
 
-    console.log("condition", condition);
+router.put("/api/burgers/:id/:devoured" , function (req, res) {
+    var id = "id = " + req.params.id;
+    let eaten = "devoured = " + req.params.devoured;
 
-    if (req.body.devoured === 0){
-    burger.update({
-        devoured: true
-    }, condition, 
-    function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-} else {
-    burger.update({
-        devoured: false
-    }, condition, 
-    function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
-}
+    console.log(id + " | " + eaten);
+    
+    if (req.body.devoured === false) {
+        burger.update({
+            devoured: true
+        }, condition,
+            function (result) {
+                if (result.changedRows == 0) {
+                    // If no rows were changed, then the ID must not exist, so 404
+                    return res.status(404).end();
+                } else {
+                    res.status(200).end();
+                }
+            });
+    } else {
+        burger.update({
+            devoured: false
+        }, condition,
+            function (result) {
+                if (result.changedRows == 0) {
+                    // If no rows were changed, then the ID must not exist, so 404
+                    return res.status(404).end();
+                } else {
+                    res.status(200).end();
+                }
+            });
+    }
 });
 
 module.exports = router;
