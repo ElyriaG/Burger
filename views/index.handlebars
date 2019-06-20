@@ -27,8 +27,8 @@
         <ul>
             {{#each burgers}}
             {{#unless devoured}}
-            <li>{{ burger_name}}</li>
-            <button class="change-to-devoured" data-id="{{id}}" data-newsleep="{{devoured}}">
+            <li>{{burger_name}}</li>
+            <button class="change-to-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
                 {{#if devoured}}Reorder this burger!{{else}}Eat this burger!{{/if}}
             </button>
             {{/unless}}
@@ -43,7 +43,7 @@
             {{#each burgers}}
             {{#if devoured}}
             <li>{{burger_name}}</li>
-            <button class="change-from-devoured" data-id="{{id}}" data-newsleep="{{devoured}}">
+            <button class="change-from-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
                 {{#if devoured}}Reorder this burger!{{else}}Eat this burger!{{/if}}
             </button>
             {{/if}}

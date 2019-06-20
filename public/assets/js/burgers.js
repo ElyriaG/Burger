@@ -2,32 +2,43 @@
 $(function () {
     $(".change-to-devoured").on("click", function (event) {
       var id = $(this).data("id");
-      var newDevoured = $(this).data("devoured");
-  
-      var newDevouredState = {
-        devoured: newDevoured
-      };
   
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
-        data: newDevouredState
+        devoured: true
       }).then(
         function () {
-          console.log("changed devoured to", newDevoured);
+          console.log("You devoured this burger!");
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
+
+    $(".change-from-devoured").on("click", function (event) {
+        var id = $(this).data("id");
+    
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+          type: "PUT",
+          devoured: false
+        }).then(
+          function () {
+            console.log("You reordered this burger!");
+            // Reload the page to get the updated list
+            location.reload();
+          }
+        );
+      });
   
     $(".create-form").on("submit", function (event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
       var newBurger = {
-        burger_name: $("#ca").val().trim(),
-        // devoured: $("[name=devoured]:checked").val().trim()
+        burger_name: $("#ca").val(),
+        devoured: false
       };
   
       // Send the POST request.
@@ -41,6 +52,7 @@ $(function () {
           location.reload();
         }
       );
+      console.log(newBurger);
     });
   
     // $(".delete-burger").on("click", function(event) {
