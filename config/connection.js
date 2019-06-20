@@ -4,11 +4,11 @@ const colors = require("colors");
 
 
 var connection = mysql.createConnection({
-  host: "localhost",
+  host: "u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
   port: 3306,
-  user: "root",
-  password: "password",
-  database: "burgers_db"
+  user: "aryjoziqlbxarbkv",
+  password: "kabw1fh74n5cv6el",
+  database: "vzf67h4h6rz1kffs"
 });
 
 // Make connection.
