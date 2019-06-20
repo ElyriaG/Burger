@@ -55,15 +55,5 @@ $(function () {
       console.log(newBurger);
     });
   
-    // $(".delete-burger").on("click", function(event) {
-    //   let id = $(this).data("id");
-    //   $.ajax("/api/cats/" + id, {
-    //     type: "DELETE"
-    //   }).then(
-    //     function() {
-    //       location.reload();
-    //     }
-    //   )
-    // })
   });
   
