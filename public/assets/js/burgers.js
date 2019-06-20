@@ -30,6 +30,7 @@ $(function () {
             location.reload();
           }
         );
+        console.log(id);
       });
   
     $(".create-form").on("submit", function (event) {
